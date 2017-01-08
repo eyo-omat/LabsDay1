@@ -3,8 +3,9 @@
 var jasmine = require('jasmine');
 var myApp = require('../app/library.js');
 var saitama;
+var junk = null;
 (function() { 
-  describe('Data types of a certaim variable: ', function () {
+  describe('Data types of a certain variable: ', function () {
 
     describe('Return the length of the the string', function () {
 
@@ -34,6 +35,30 @@ var saitama;
 
       it('should return "no value" for undefined', function () {
         expect(myApp.dataType(undefined)).toEqual("no value");
+      });
+
+    });
+
+    describe('Return boolean value for an boolean variable', function () {
+
+      it('should return true for true', function () {
+        expect(myApp.dataType(true)).toEqual(true);
+      });
+
+      it('should return false for false', function () {
+        expect(myApp.dataType(false)).toEqual(false);
+      });
+
+    });
+
+    describe('Return `no value` for an null variable', function () {
+
+      it('should return "no value" for null', function () {
+        expect(myApp.dataType(null)).toEqual("no value");
+      });
+
+      it('should return "no value" for junk', function () {
+        expect(myApp.dataType(junk)).toEqual("no value");
       });
 
     });
