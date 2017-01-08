@@ -2,17 +2,17 @@
 
 module.exports = {
 
-dataType: function(variable){
+dataTypes: function(variable){
     if (typeof variable === 'undefined' || variable === null ) {
         return 'no value';
     }
-    if (typeof variable === 'string') {
+    else if (typeof variable === 'string') {
         return variable.length;
     }
-    if (typeof variable === 'boolean') {
+    else if (typeof variable === 'boolean') {
         return variable;
     }
-    if (typeof variable === 'number') {
+    else if (typeof variable === 'number') {
         if (variable < 100) {
             return 'less than 100';
         } else if (variable > 100) {
@@ -21,15 +21,16 @@ dataType: function(variable){
             return 'equal to 100';
         }
     }
-    if (typeof variable.isArray()) {
-        if (variable,lenght < 4) {
-            return 'undefined';
-        } else {
-            return variable[3];
-        }        
+    else if (typeof variable === 'function') {
+            var callBack = variable(true);
+            return callBack;
     }
-    if (typeof variable === 'function') {
-        return variable(true);
+    else if (typeof variable.isArray) {
+        if (variable.length < 3) {
+            return undefined;
+        } else {
+            return variable[2];
+        }        
     }
         
 }
