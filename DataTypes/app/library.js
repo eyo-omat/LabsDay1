@@ -21,16 +21,15 @@ dataTypes: function(variable){
             return 'equal to 100';
         }
     }
-    else if (typeof variable === 'function') {
-            var callBack = variable(true);
-            return callBack;
-    }
-    else if (typeof variable.isArray) {
+    else if (Array.isArray(variable)) {
         if (variable.length < 3) {
             return undefined;
         } else {
             return variable[2];
         }        
+    }
+    else if (typeof variable === 'function') {
+            return variable(true);
     }
         
 }
