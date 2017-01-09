@@ -1,52 +1,52 @@
 
 var jasmine = require('jasmine');
-var myApp = require('../app/library.js');
+var Car = require('../app/library.js');
 (function(){
   'use strict';
-  describe("Car Class: Create a car, make it drive", function() {
+  describe("Mammal Class: Create a Mammal, feed it", function() {
 
-    it("The car should be a type of `object`, and an instance of the `Car` class", function() {
-      var honda = new Car('Honda');
-      expect(typeof honda).toEqual(typeof {});
-      expect(honda instanceof Car).toBeTruthy();
+    it("The Mammal should be a type of `object`, and an instance of the `Mammal` class", function() {
+      var bear = new Mammal('Bear');
+      expect(typeof bear).toEqual(typeof {});
+      expect(bear instanceof Mammal).toBeTruthy();
     });
 
-    it("The car should be called 'General' if no name is passed as a parameter", function() {
-      var gm = new Car();
-      expect(gm.name).toEqual('General');
-      expect(gm.model).toBe('GM');
+    it("The mammal should be called 'Man' if no name is passed as a parameter", function() {
+      var man = new Mammal();
+      expect(man.name).toEqual('Man');
+      expect(man.habitat).toBe('land');
     });
 
-    it("The car name and model should be a property of the car", function() {
-      var toyota  = new Car('Toyota', 'Corolla');
-      expect(toyota.name).toBe('Toyota');
-      expect(toyota.model).toBe('Corolla');
+    it("The mammal name and habitat should be a property of the mammal", function() {
+      var seaLion  = new Mammal('Sea Lion', 'Water');
+      expect(seaLion.name).toBe('Sea Lion');
+      expect(seaLion.habitat).toBe('Water');
     });
 
-    it("The car shoud have four (4) doors except its a Porshe or Koenigsegg", function() {
-      var opel  = new Car('Opel', 'Omega 3');
-      expect(opel.numOfDoors).toBe(4);
+   it("The Mammal shoud not be able to swim except if their habitat is water", function() {
+      var seaTurtle = new Mammal('Sea Turtle', 'water');
+      expect(opel.canSwim).toBeTruthy();
 
-      var porshe = new Car('Porshe', '911 Turbo');
-      expect(porshe.numOfDoors).toBe(2);
-      porshe.drive(5);
-      expect(porshe.speed).toBe('250 km/h');
+      var lion = new Car('Lion', 'land');
+      expect(lion.canSwim).toBe(false);
+      lion.feed();
+      expect(lion.energyLevel).toBe('250 J');
       expect((function(){return new Car('Koenigsegg', 'Agera R');}()).numOfDoors).toBe(2);
     });
 
-    it("The car shoud have four (4) wheels except its a type of trailer", function() {
-      var man  = new Car('MAN', 'Truck', 'trailer');
-      expect(man.numOfWheels).toBe(8);
-      expect(man.isSaloon).toBe(false);
+    it("The car shoud have one (1) diet except its a type of omnivore", function() {
+      var tiger  = new Mammal('Tiger', 'land', 'Carnivore');
+      expect(man.diet).toBe(1);
+      expect(man.canSpeak).toBe(false);
 
-      var koenigsegg = new Car('Koenigsegg', 'Agera R');
-      expect(koenigsegg.numOfWheels).toBe(4);
-      expect(koenigsegg.isSaloon).toBeTruthy();
+      var man = new Car('Man', 'land');
+      expect(man.diet).toBe(2);
+      expect(man.canSpeak).toBeTruthy();
     });
 
     it("The Trailer should have speed 0 km/h until you put `the pedal to the metal`", function() {
-      var man  = new Car('MAN', 'Truck', 'trailer');
-      expect(man.speed).toBe('0 km/h');
+      var Tilapia  = new Car('Tilapia', 'Water', 'herbivore');
+      expect(man.canSwim).toBe(true);
       man.drive(7);
       expect(man.speed).toBe('77 km/h');
     });
@@ -56,7 +56,7 @@ var myApp = require('../app/library.js');
       var drivingMan = man.drive(7);
       expect(drivingMan instanceof Car).toBeTruthy();
       expect(typeof drivingMan.drive).toBe(typeof (function (){}));
-      expect(man.speed).toBe(drivingMan.speed);
+      expect(man.energyLevel).toBe(drivingMan.energyLevel);
     });
 
   });
