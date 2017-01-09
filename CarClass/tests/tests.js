@@ -1,6 +1,6 @@
 
 var jasmine = require('jasmine');
-var Car = require('../app/library.js');
+var Mammal = require('../app/library.js');
 (function(){
   'use strict';
   describe("Mammal Class: Create a Mammal, feed it", function() {
@@ -25,38 +25,36 @@ var Car = require('../app/library.js');
 
    it("The Mammal shoud not be able to swim except if their habitat is water", function() {
       var seaTurtle = new Mammal('Sea Turtle', 'water');
-      expect(opel.canSwim).toBeTruthy();
+      expect(seaTurtle.canSwim).toBeTruthy();
 
-      var lion = new Car('Lion', 'land');
+      var lion = new Mammal('Lion', 'land', 'carnivore');
       expect(lion.canSwim).toBe(false);
-      lion.feed();
-      expect(lion.energyLevel).toBe('250 J');
-      expect((function(){return new Car('Koenigsegg', 'Agera R');}()).numOfDoors).toBe(2);
+      lion.feed(8);
+      expect(lion.energyLevel).toBe('640 J');
+      expect((function(){return new Mammal('Whale', 'water');}()).canSwim).toBeTruthy();
     });
 
-    it("The car shoud have one (1) diet except its a type of omnivore", function() {
-      var tiger  = new Mammal('Tiger', 'land', 'Carnivore');
-      expect(man.diet).toBe(1);
-      expect(man.canSpeak).toBe(false);
+    it("The Mammal shoud have one (1) diet except its a type of omnivore", function() {
+      var tiger  = new Mammal('Tiger', 'land', 'carnivore');
+      expect(tiger.diet).toBe(1);
 
-      var man = new Car('Man', 'land');
+      var man = new Mammal('Man', 'land');
       expect(man.diet).toBe(2);
-      expect(man.canSpeak).toBeTruthy();
     });
 
-    it("The Trailer should have speed 0 km/h until you put `the pedal to the metal`", function() {
-      var Tilapia  = new Car('Tilapia', 'Water', 'herbivore');
-      expect(man.canSwim).toBe(true);
-      man.drive(7);
-      expect(man.speed).toBe('77 km/h');
+    it("The Mammal should have energyLevel 0 J until you put `food in the belly`", function() {
+      var tilapia  = new Mammal('Tilapia', 'Water', 'herbivore');
+      expect(tilapia.canSwim).toBe(true);
+      tilapia.feed(4);
+      expect(tilapia.energyLevel).toBe('160 J');
     });
 
-    it("The car drive function should return the instance of the Car class", function() {
-      var man  = new Car('MAN', 'Truck', 'trailer');
-      var drivingMan = man.drive(7);
-      expect(drivingMan instanceof Car).toBeTruthy();
-      expect(typeof drivingMan.drive).toBe(typeof (function (){}));
-      expect(man.energyLevel).toBe(drivingMan.energyLevel);
+    it("The Mammal feed function should return the instance of the Mammal class", function() {
+      var man  = new Mammal('Man', 'land', 'omnivore');
+      var dog = man.feed(15);
+      expect(dog instanceof Mammal).toBeTruthy();
+      expect(typeof dog.feed).toBe(typeof (function (){}));
+      expect(man.energyLevel).toBe(dog.energyLevel);
     });
 
   });

@@ -23,5 +23,12 @@ var myApp = require('../app/library.js');
     });
 
   });
+  describe("returns undefined for n less than 2", function() {
+
+    it("should return undefined for 6", function() {
+      expect(myApp.getPrimes(6)).toEqual([0,1,2,3,5]);
+    });
+
+  });
 });
 })();
