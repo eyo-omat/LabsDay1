@@ -25,8 +25,12 @@ var myApp = require('../app/library.js');
   });
   describe("returns undefined for n less than 2", function() {
 
-    it("should return undefined for 6", function() {
-      expect(myApp.getPrimes(6)).toEqual([0,1,2,3,5]);
+    it("should return undefined for 0", function() {
+      expect(myApp.getPrimes(0)).not.toBeDefined();
+    });
+
+    it("should return undefined for 1", function() {
+      expect(myApp.getPrimes(1)).not.toBeDefined();
     });
 
   });
