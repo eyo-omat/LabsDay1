@@ -1,6 +1,6 @@
 'use strict'
-var Car = function (name, model) {
-        this.name = 'General';
-        this.model = 'GM';
+var Car = function (name= 'General', model= 'GM') {
+        this.name = name;
+        this.model = model;
 }
 module.exports = Car;
