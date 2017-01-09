@@ -2,8 +2,6 @@
 
 var jasmine = require('jasmine');
 var myApp = require('../app/library.js');
-var saitama;
-var junk = null;
 (function() { 
   describe("Get prime Numbers from 0 to n ", function() {
   describe("returns array of prime numbers for n", function() {
